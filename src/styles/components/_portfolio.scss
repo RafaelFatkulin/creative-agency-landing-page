@@ -1,0 +1,214 @@
+@import '../mixins/typography-mixin';
+@import '../mixins/hover-mixin';
+@import '../mixins/breakpoints';
+
+.portfolio {
+  margin-bottom: 194px;
+}
+
+.portfolio__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
+  &:before,
+  &:after {
+    z-index: -10;
+    position: absolute;
+    content: url("/public/images/violet_dots.svg");
+    width: 98px;
+    height: 70px;
+  }
+
+  &:before {
+    top: 146px;
+    right: -10px;
+    transform: rotate(-16.32deg);
+  }
+
+  &:after {
+    top: 354px;
+    left: 400px;
+    transform: rotate(19.17deg);
+  }
+}
+
+.portfolio__title {
+  margin-bottom: 20px;
+}
+
+.portfolio__subtitle {
+  margin-bottom: 28px;
+}
+
+.portfolio__text {
+  margin-bottom: 74px;
+  max-width: 674px;
+  text-align: center;
+}
+
+.portfolio__items {
+  margin-bottom: 60px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 60px;
+}
+
+.portfolio__item {
+  display: flex;
+  max-width: 350px;
+  max-height: 350px;
+  min-width: 300px;
+  min-height: 300px;
+  position: relative;
+  border-radius: 30px;
+  transition: var(--transition);
+
+  img {
+    border-radius: 30px;
+    object-fit: cover;
+  }
+
+  &:after {
+    position: absolute;
+    content: "";
+    display: block;
+    max-width: 350px;
+    max-height: 350px;
+    min-width: 300px;
+    min-height: 300px;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
+  }
+
+  span {
+    position: absolute;
+    z-index: 20;
+    left: 0;
+    bottom: 0;
+    margin: 0 0 10% 10%;
+    color: var(--white);
+    font-weight: 700;
+    @include font-size(24px, 24px, 390px, 1920px);
+  }
+
+  &:hover {
+    scale: 1.14285;
+  }
+}
+
+.portfolio__button {
+  color: var(--blue);
+  background-color: var(--white);
+  border: 1px solid var(--blue);
+
+  &:hover {
+    color: var(--white);
+    background-color: var(--blue);
+  }
+
+  &:active {
+    background-color: var(--blue-darken);
+    border-color: var(--blue-darken);
+  }
+}
+
+@include breakpoint('large') {
+  .portfolio {
+    margin-bottom: 164px;
+  }
+  .portfolio__text {
+    margin-bottom: 56px;
+  }
+  .portfolio__items {
+    max-width: 760px;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    margin-bottom: 48px;
+  }
+  .portfolio__item {
+    &:hover {
+      scale: 1.1;
+    }
+  }
+}
+
+@include breakpoint('large') {
+  .portfolio {
+    margin-bottom: 128px;
+  }
+}
+
+@include breakpoint('small') {
+  .portfolio {
+    margin-bottom: 104px;
+  }
+
+  .portfolio__inner {
+    &:before,
+    &:after {
+      display: none;
+    }
+  }
+
+  .portfolio__title {
+    margin-bottom: 10px;
+  }
+
+  .portfolio__subtitle {
+    margin-bottom: 34px;
+  }
+
+  .portfolio__text {
+    margin-bottom: 34px;
+  }
+
+  .portfolio__items {
+    width: 100%;
+  }
+
+  .portfolio__item {
+    max-width: 100%;
+
+    span {
+      left: 50%;
+      transform: translate(-50%, -10%);
+      top: 50%;
+      text-align: center;
+      margin: 0;
+    }
+
+    &:after {
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    @include hover {
+      &:hover {
+        scale: none;
+      }
+    }
+  }
+
+  .portfolio__button {
+    @include hover {
+      &:hover {
+        color: var(--blue);
+        background-color: var(--white);
+      }
+
+      &:active {
+        background-color: var(--blue-darken);
+        color: var(--white);
+        border-color: var(--blue-darken);
+      }
+    }
+  }
+}
