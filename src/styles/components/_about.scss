@@ -40,13 +40,13 @@
   }
 
   &:before {
-    content: url("../../../public/images/orange_dots.svg");
+    content: url("/public/images/orange_dots.svg");
     top: -18px;
     left: -30px;
   }
 
   &:after {
-    content: url("../../../public/images/violet_dots.svg");
+    content: url("/public/images/violet_dots.svg");
     bottom: -10px;
     right: -38px;
   }
